@@ -1,0 +1,189 @@
+/* Photos are set in templates/store/home.html (the :root block), using Django static. */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:#000}
+body{background:#000;overflow-x:hidden}
+#fit{position:relative;width:100%;overflow:hidden}
+#stage{position:absolute;left:0;top:0;width:1440px;height:5000px;overflow:hidden;background:#cdb7b7;transform-origin:0 0;
+  font-family:'Poiret One Embedded','Poiret One',sans-serif;color:#000;line-height:1.2}
+#stage .abs,#stage a,#stage button,#stage .t,#stage .anchor{position:absolute}
+.anchor{width:1px;height:1px;visibility:hidden}
+a{color:#8D3E36;text-decoration:none}
+.slot{position:absolute;inset:0;display:block;background-color:#8b8178;background-repeat:no-repeat;background-position:center;background-size:cover}
+.bgblur{position:absolute;background-color:#6b6159;background-repeat:no-repeat;background-position:center;background-size:cover;filter:blur(4px)}
+.t{white-space:nowrap}
+.poiret{font-family:'Poiret One Embedded','Poiret One',sans-serif;font-size:25px;color:#000}
+.reddit{font-family:'Reddit Sans Embedded','Reddit Sans',sans-serif;font-size:25px;color:#8D3E36}
+/* Ponnala has no Latin glyphs in the design, so letters fall back to a serif exactly as in the export */
+.ponnala{font-family:'Ponnala Embedded','Maah Serif Embedded','Times New Roman','Liberation Serif',Times,serif;font-weight:400}
+.body{font-family:'Source Sans Embedded','Source Sans 3','Source Sans Pro','Malayalam Embedded',sans-serif;color:#f2e9d2;white-space:nowrap}
+.body .ln{display:block}
+.card{border-radius:21px;overflow:hidden;display:block}
+.card .photo{border-radius:21px;overflow:hidden}
+.card .bar{position:absolute;left:0;width:100%;background:rgba(242,233,210,.5147);border-radius:21px}
+.navbar{left:25px;top:30px;width:1383px;height:71px;background:#f2e9d2;border-radius:40px}
+.navlink{display:block}
+.burger{background:none;border:0;cursor:pointer}
+.burger i{position:absolute;left:0;width:22px;height:5px;border-radius:32px;background:#8D3E36}
+.shopbtn{left:53px;top:675px;width:228px;height:53px;background:#f2e9d2;border:6px solid #000;border-radius:58px}
+.menu{left:25px;top:112px;width:300px;padding:14px 0;background:#f2e9d2;border-radius:30px;z-index:5;opacity:0;visibility:hidden;translate:0 -10px;transition:opacity .35s var(--ease),translate .35s var(--ease),visibility 0s .35s}
+.menu.open{opacity:1;visibility:visible;translate:0 0;transition-delay:0s}
+#stage .menu a{position:relative;display:block;width:fit-content;padding:8px 36px;font-size:25px;line-height:1.2}
+.footer{position:absolute;left:0;top:4476px;width:1440px;height:524px;background:#000}
+
+/* =====================================================================
+   MOBILE LAYOUT (<= 768px) — fluid version of the same design
+   ===================================================================== */
+#m{display:none}
+@media (max-width:768px){
+  #fit{display:none}
+  html,body{background:#cdb7b7}
+  #m{display:block;position:relative;overflow:hidden;color:#000;line-height:1.2;font-family:'Poiret One Embedded','Poiret One',sans-serif}
+  #m a{color:inherit;text-decoration:none}
+  #m .slot{position:absolute;inset:0;display:block;background-color:#8b8178;background-repeat:no-repeat;background-position:center;background-size:cover}
+  .m-sec{position:relative;overflow:hidden;padding:0 20px}
+  .m-bg{position:absolute;inset:-12px;background-color:#6b6159;background-repeat:no-repeat;background-position:center;background-size:cover;filter:blur(4px);z-index:0}
+  .m-sec>*:not(.m-bg){position:relative;z-index:1}
+  .m-ponnala{font-family:'Ponnala Embedded','Maah Serif Embedded','Times New Roman','Liberation Serif',Times,serif;font-weight:400;line-height:1.1}
+  .m-h1{font-size:min(30vw,170px);color:#f2e9d2}
+  .m-by{font-size:min(8vw,44px);color:#f2e9d2;margin-top:2px}
+  .m-h2{font-size:min(15vw,90px);color:#fffbdd;line-height:1.05}
+  .m-text{font-family:'Source Sans Embedded','Source Sans 3','Source Sans Pro','Malayalam Embedded',sans-serif;color:#f2e9d2;font-size:15px;line-height:1.45}
+  .m-text p+p{margin-top:14px}
+
+  /* nav */
+  .m-nav{position:sticky;top:12px;z-index:20;margin:12px 12px 0;height:56px;border-radius:40px;background:#f2e9d2;display:flex;align-items:center;justify-content:space-between;padding:0 22px}
+  .m-burger{position:relative;width:32px;height:32px;margin-left:-5px;background:none;border:0;cursor:pointer}
+  .m-burger i{position:absolute;left:5px;width:22px;height:5px;border-radius:32px;background:#8D3E36}
+  .m-burger i:nth-child(1){top:5px}
+  .m-burger i:nth-child(2){top:14px}
+  .m-burger i:nth-child(3){top:22px}
+  .m-logo{position:absolute;left:50%;top:50%;width:84px;height:50px;transform:translate(-50%,-50%)}
+  #m .m-logo .slot{background-color:transparent;background-size:contain}
+  .m-logo .mark{inset:4px 25px}
+  .m-navlink{font-size:22px;color:#8D3E36}
+  .m-menu{position:absolute;left:0;top:64px;width:min(300px,100%);padding:12px 0;background:#f2e9d2;border-radius:28px;box-shadow:0 8px 24px rgba(0,0,0,.18);opacity:0;visibility:hidden;translate:0 -10px;transition:opacity .35s var(--ease),translate .35s var(--ease),visibility 0s .35s}
+  .m-menu.open{opacity:1;visibility:visible;translate:0 0;transition-delay:0s}
+  .m-menu a{display:block;padding:10px 30px;font-size:24px}
+
+  /* hero */
+  .m-hero{margin-top:-68px;padding-top:150px;padding-bottom:56px;min-height:min(640px,100svh)}
+  .m-hero .m-bg{filter:none;inset:0}
+  .m-btn{display:inline-block;margin-top:28px;width:200px;height:50px;line-height:38px;text-align:center;background:#f2e9d2;border:6px solid #000;border-radius:58px;font-size:22px;color:#000}
+
+  /* categories */
+  .m-cat{padding-top:44px;padding-bottom:44px}
+  .m-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:28px}
+  .m-card{position:relative;display:block;aspect-ratio:222/234;border-radius:21px;overflow:hidden}
+  .m-card .bar{position:absolute;left:0;right:0;bottom:0;height:17%;border-radius:21px;background:rgba(242,233,210,.5147);display:flex;align-items:center;justify-content:center;font-family:'Reddit Sans Embedded','Reddit Sans',sans-serif;font-size:18px;color:#8D3E36}
+
+  /* new arrivals: swipeable row */
+  .m-new{padding-top:44px;padding-bottom:44px}
+  .m-rail{display:flex;gap:16px;margin:28px -20px 0;padding:0 20px 6px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .m-rail::-webkit-scrollbar{display:none}
+  .m-rail .m-card{flex:0 0 72%;max-width:300px;aspect-ratio:299/450;scroll-snap-align:center}
+  .m-rail .m-card .bar{height:17%}
+
+  /* about / why */
+  .m-about{padding-top:48px;padding-bottom:56px}
+  /* Zoom slightly to hide the white bands in about-maah.jpg. */
+  .m-about .m-bg{background-size:auto 115%}
+  .m-about .m-h2{font-size:min(12vw,70px)}
+  .m-about .m-h1{margin-top:0}
+  .m-about .m-text{margin-top:26px;font-size:16px}
+  .m-why{padding-top:48px;padding-bottom:64px}
+  .m-footer{height:160px;background:#000}
+}
+@media (max-width:768px) and (min-width:521px){
+  .m-grid{grid-template-columns:repeat(3,1fr)}
+  .m-rail .m-card{flex-basis:44%}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+}
+
+/* =====================================================================
+   ANIMATIONS
+   ===================================================================== */
+:root{--ease:cubic-bezier(.22,.61,.36,1)}
+
+/* entrance: navbar drops in */
+@keyframes navDrop{
+  from{opacity:0;translate:0 -24px}
+  to{opacity:1;translate:0 0}
+}
+.js .navbar,.js .m-nav{animation:navDrop .8s var(--ease) both}
+
+/* scroll / load reveal */
+.js .rv{opacity:0;translate:0 30px;transition:opacity .9s var(--ease),translate .9s var(--ease)}
+.js .rv.in{opacity:1;translate:0 0}
+.js .rv.shopbtn,.js .m-btn.rv{transition:opacity .9s var(--ease),translate .9s var(--ease),background-color .3s,scale .3s var(--ease)}
+
+/* slow breathing zoom on the hero photo */
+@keyframes heroZoom{
+  from{scale:1}
+  to{scale:1.07}
+}
+[data-slot="hero-bg"]{animation:heroZoom 22s ease-in-out infinite alternate;transform-origin:50% 50%}
+
+/* burger -> X */
+.burger i,.m-burger i{transition:transform .35s var(--ease),opacity .25s}
+.burger.open i:nth-child(1){transform:translateY(9px) rotate(45deg)}
+.burger.open i:nth-child(2){opacity:0}
+.burger.open i:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
+.m-burger.open i:nth-child(1){transform:translateY(9px) rotate(45deg)}
+.m-burger.open i:nth-child(2){opacity:0}
+.m-burger.open i:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+
+/* nav link underline draw */
+.navbar a.poiret::after,.menu a::after,.m-navlink::after,.m-menu a::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.m-navlink,.m-menu a{position:relative}
+.menu a{position:relative}
+.menu a::after,.m-menu a::after{left:30px;right:30px;bottom:6px}
+.shopbtn{cursor:pointer}
+.card .photo,#m .m-card .slot{transition:transform 1s var(--ease)}
+.card .bar,.m-card .bar{transition:background-color .4s}
+
+@media (hover:hover){
+  .navbar a.poiret:hover::after,.menu a:hover::after,.m-navlink:hover::after,.m-menu a:hover::after{transform:scaleX(1)}
+  .shopbtn:hover{background:#8D3E36}
+  .shopbtn:hover+a.poiret{color:#F2E9D2}
+  .m-btn:hover{background:#8D3E36;color:#F2E9D2;scale:1.04}
+  .card:hover .photo,.m-card:hover .slot{transform:scale(1.07)}
+  .card:hover .bar,.m-card:hover .bar{background:rgba(242,233,210,.78)}
+}
+.m-btn:active{scale:.97}
+
+/* Let clicks and hover reach the button underneath its separate text link. */
+.shopbtn+a.poiret{pointer-events:none}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv{opacity:1!important;translate:none!important}
+}
+
+/* Navigation text: desktop and mobile */
+#stage #nav a,
+#stage #menu a,
+#m .m-nav a{
+  color:#8D3E36;
+}
+
+/* Override the mobile link color reset on Shop Now hover. */
+@media (hover:hover){
+  #m .m-btn:hover{color:#F2E9D2}
+}
+/* Anchor each desktop dropdown underline to its own link. */
+#stage #menu a::after{left:36px;right:36px;bottom:6px}
+
+/* Homepage New Arrivals: product names in Poppins. */
+#stage .home-arrival .bar,
+#m .home-arrival .bar{font-family:'Poppins',sans-serif;font-weight:600;display:flex;align-items:center;justify-content:center;text-align:center}
+
+/* Slightly larger homepage New Arrivals names. */
+#stage .home-arrival .bar{font-size:19.8px}
+#m .home-arrival .bar{font-size:22px}
+
+/* Customer account link, alongside the menu icon. */
+#nav .nav-account{left:84px;top:18px;width:32px;height:36px;display:flex;align-items:center;justify-content:center}
+#m .m-nav .nav-account{position:absolute;left:70px;top:50%;transform:translateY(-50%);width:32px;height:36px;display:flex;align-items:center;justify-content:center}
+.nav-account svg{width:26px;height:26px}.nav-account:hover{opacity:.75}.nav-account:focus-visible{outline:2px solid currentColor;outline-offset:4px;border-radius:6px}

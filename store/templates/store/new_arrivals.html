@@ -1,0 +1,19 @@
+{% extends 'store/base.html' %}
+{% block title %}New arrivals | Maah by Amirtha{% endblock %}
+{% block description %}The newest sarees from Maah by Amirtha.{% endblock %}
+{% block content %}
+  <nav class="pg-crumbs" aria-label="Breadcrumb"><a href="{% url 'home' %}">home</a> <span>/</span> <span aria-current="page">new arrivals</span></nav>
+  <div class="pg-head">
+    <h1 class="pg-title pg-rv">New arrivals</h1>
+    <p class="pg-sub pg-rv">Freshly draped, just in.</p>
+  </div>
+  {% if catalog_error %}<p class="pg-empty" role="status">{{ catalog_error }}</p>
+  {% elif products %}
+  <div class="pg-grid">
+    {% for p in products %}{% include 'store/_product_card.html' with product=p %}{% endfor %}
+  </div>
+  {% else %}
+  <p class="pg-empty">Nothing new right now. Please check back soon.</p>
+  {% endif %}
+{% include "store/_pagination.html" %}
+{% endblock %}

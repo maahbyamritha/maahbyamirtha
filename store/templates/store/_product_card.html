@@ -1,0 +1,5 @@
+{% load static %}<a class="pg-card pg-rv" href="{% url 'product' product.slug %}" aria-label="{{ product.name }}, {{ product.price_display }}">
+  <span class="ph" style="background-image:url('{{ product.image_url }}')"></span>
+  {% if product.is_new %}<span class="badge">new</span>{% endif %}
+  <span class="bar"><span class="name">{{ product.name }}</span><span class="price">{{ product.price_display }}</span></span>
+</a>

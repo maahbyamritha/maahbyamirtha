@@ -1,0 +1,191 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#cdb7b7">
+  <meta name="description" content="Maah by Amirtha. Sarees rooted in nurture, warmth, and heritage.">
+  <title>Maah by Amirtha</title>
+  <!-- adds the "js" class before first paint so scroll animations can start hidden (skipped when the visitor prefers reduced motion) -->
+  <script>if(!matchMedia("(prefers-reduced-motion:reduce)").matches)document.documentElement.classList.add("js")</script>
+  <!-- Fallback web fonts: only used for characters that are not in the embedded fonts (fonts.css) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Poppins:wght@400;600&family=Reddit+Sans&family=Source+Sans+3&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'store/fonts.css' %}">
+  <link rel="stylesheet" href="{% static 'store/style.css' %}?v=shopify-account-1">
+  <!-- PHOTOS: every image used by the page is set here, so Django resolves the static paths -->
+  <style>
+    :root {
+      --hero-bg: url("{% static 'store/images/hero-maah.jpg' %}");
+      --collections-bg: url("{% static 'store/images/category-weaves.jpg' %}");
+      --new-arrivals-bg: url("{% static 'store/images/arrivals-background.jpg' %}");
+      --about-bg: url("{% static 'store/images/about-maah.jpg' %}");
+      --why-bg: url("{% static 'store/images/why-background.jpg' %}");
+      --logo: url("{% static 'store/images/maah-wide-logo.png' %}");
+      --logo-mark: none;
+      --silk: url("{% static 'store/images/silk-saree.jpg' %}");
+      --cotton: url("{% static 'store/images/cotton-saree.jpg' %}");
+      --shifon: url("{% static 'store/images/chiffon-saree.jpg' %}");
+      --category-4: url("{% static 'store/images/tulsi-sarees.jpg' %}");
+      --category-5: url("{% static 'store/images/mint-saree.jpg' %}");
+      --category-6: url("{% static 'store/images/teal-saree.jpg' %}");
+      --arrival-1: url("{% static 'store/images/tulsi-sarees.jpg' %}");
+      --arrival-2: url("{% static 'store/images/silk-saree.jpg' %}");
+      --arrival-3: url("{% static 'store/images/green-saree.jpg' %}");
+    }
+  </style>
+</head>
+<body>
+<div id="fit">
+<main id="stage">
+
+  <!-- ===== HERO / HOME ===== -->
+  <span class="anchor" id="home" style="left:0;top:0"></span>
+  <div class="abs" style="left:-154px;top:-22px;width:1631px;height:918px"><span class="slot" data-slot="hero-bg" role="img" aria-label="A woman in a deep maroon saree, seated in warm window light" style="background-image:var(--hero-bg,none)"></span></div>
+
+  <header class="navbar abs" id="nav">
+    <a class="nav-account" href="{% url 'account' %}" aria-label="Your account" title="Your account"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="16" cy="10" r="5"/><path d="M6 28v-3a10 10 0 0 1 20 0v3"/></svg></a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" style="left:36px;top:24px;width:22px;height:23px"><i style="top:0"></i><i style="top:10px"></i><i style="top:18px"></i></button>
+    <div class="abs" style="left:626px;top:-6px;width:138px;height:82px"><span class="slot" data-slot="logo" style="background-color:transparent;background-image:var(--logo,none);background-size:contain"></span></div>
+    <div class="abs" style="left:672px;top:13px;width:34px;height:50px"><span class="slot" data-slot="logo-mark" style="background-color:transparent;background-image:var(--logo-mark,none);background-size:contain"></span></div>
+    <a class="t poiret" href="#home" style="left:844px;top:20px">home</a>
+    <a class="t poiret" href="{% url 'collections' %}" style="left:944.0px;top:20px">collections</a>
+    <a class="t poiret" href="#about" style="left:1084px;top:21px">about</a>
+    <a class="t poiret" href="#contact" style="left:1187px;top:21px">contact</a>
+    <a class="t poiret" href="{% url 'cart' %}" style="left:1290px;top:21px">cart</a>
+  </header>
+  <nav class="menu abs" id="menu" aria-label="Menu"><a class="poiret" href="#home">home</a><a class="poiret" href="{% url 'collections' %}">collections</a><a class="poiret" href="{% url 'new_arrivals' %}">new arrivals</a><a class="poiret" href="#about">about</a><a class="poiret" href="#contact">contact</a><a href="{% url 'account' %}">your account</a><a href="{% url 'cart' %}">cart</a></nav>
+
+  <h1 class="t ponnala rv" style="left:53px;top:277px;font-size:200px;color:#f2e9d2">Maah</h1>
+  <p class="t ponnala rv" style="left:54px;top:435px;font-size:49px;color:#f2e9d2">by amirtha</p>
+  <p class="t body rv" style="left:53px;top:525px;font-size:14px">
+<span class="ln">Maah is inspired by the first love we know, a mother’s embrace. Derived from “Maah,” meaning mother, the brand represents nurture, warmth,</span>
+<span class="ln">and the earliest lessons of beauty.</span>
+<span class="ln">&nbsp;</span>
+<span class="ln">The logo integrates the Malayalam mother-tongue letter “മ” (Ma) with the Latin “M,” symbolising heritage and</span>
+<span class="ln">continuity where tradition meets contemporary expression. Its form flows like a gentle drape, reflecting how a</span>
+<span class="ln">mother first teaches us to wrap ourselves in beauty and identity. Soft curves express care and femininity, while </span>
+<span class="ln">the structured “M” adds strength and stability, balancing tenderness with resilience.</span>
+  </p>
+  <a class="shopbtn abs rv" href="{% url 'collections' %}" aria-label="shop now"></a>
+  <a class="t poiret rv" href="{% url 'collections' %}" style="left:106px;top:685.5px;">shop now</a>
+
+  <!-- ===== SHOP BY CATEGORY ===== -->
+  <span class="anchor" id="collections" style="left:0;top:896px"></span>
+  <div class="bgblur" style="left:0.0px;top:896.0px;width:1440px;height:895px;" data-slot="collections-bg" role="img" aria-label="A mother and daughter sharing a moment among flowers"><span class="slot" style="background-color:transparent;background-image:var(--collections-bg,none)"></span></div>
+  <h2 class="t ponnala rv" style="left:53px;top:1063px;font-size:108px;color:#fffbdd">Shop by category</h2>
+  <a class="card rv" href="{% url 'category' 'silk' %}" aria-label="Shop Silk sarees" style="left:422px;top:1225px;width:222px;height:234px;"><span class="slot photo" data-slot="silk" style="background-image:var(--silk,none)"></span><span class="bar" style="top:193px;height:40.0px"></span></a>
+  <a class="card rv" href="{% url 'category' 'cotton' %}" aria-label="Shop Cotton sarees" style="left:692.8px;top:1224.53px;width:222px;height:234px;"><span class="slot photo" data-slot="cotton" style="background-image:var(--cotton,none)"></span><span class="bar" style="top:193.0px;height:40.0px"></span></a>
+  <a class="card rv" href="{% url 'category' 'shifon' %}" aria-label="Shop Shifon sarees" style="left:963.1px;top:1226.54px;width:222px;height:234px;"><span class="slot photo" data-slot="shifon" style="background-image:var(--shifon,none)"></span><span class="bar" style="top:193.0px;height:40.0px"></span></a>
+  <a class="card rv" href="{% url 'collections' %}" aria-label="Explore sarees" style="left:597.97px;top:1522.57px;width:222px;height:234px;"><span class="slot photo" data-slot="category-4" style="background-image:var(--category-4,none)"></span><span class="bar" style="top:193.0px;height:40.0px"></span></a>
+  <a class="card rv" href="{% url 'collections' %}" aria-label="Explore sarees" style="left:870.16px;top:1522.5px;width:222px;height:234px;"><span class="slot photo" data-slot="category-5" style="background-image:var(--category-5,none)"></span><span class="bar" style="top:193.0px;height:40.0px"></span></a>
+  <a class="card rv" href="{% url 'collections' %}" aria-label="Explore sarees" style="left:1142.4px;top:1521.79px;width:222px;height:234px;"><span class="slot photo" data-slot="category-6" style="background-image:var(--category-6,none)"></span><span class="bar" style="top:193.0px;height:40.0px"></span></a>
+  <span class="t reddit rv" style="left:515px;top:1423px;">Silk</span>
+  <span class="t reddit rv" style="left:762px;top:1423px;">Cotton</span>
+  <span class="t reddit rv" style="left:1033px;top:1423px;">Shifon</span>
+
+  <!-- ===== NEW ARRIVALS ===== -->
+  <span class="anchor" id="new-arrivals" style="left:0;top:1791px"></span>
+  <div class="bgblur" style="left:0px;top:1791px;width:1440px;height:895px;" data-slot="new-arrivals-bg" role="img" aria-label="A mother and daughter among flower baskets"><span class="slot" style="background-color:transparent;background-image:var(--new-arrivals-bg,none)"></span></div>
+  <h2 class="t ponnala rv" style="left:53.0px;top:1941px;font-size:108px;color:#fffbdd">New arrivals</h2>
+  {% for product in arrivals %}
+  <a class="card rv home-arrival" href="{% url 'product' product.slug %}" aria-label="{{ product.name }}" style="left:{{ product.left }}px;top:2102px;width:299px;height:450px;"><span class="slot photo" style="background-image:url('{{ product.image_url }}')"></span><span class="bar" style="top:371px;height:77px;padding:12px;box-sizing:border-box">{{ product.name }}</span></a>
+  {% empty %}<p class="t poiret" style="left:323px;top:2102px">{% if catalog_error %}{{ catalog_error }}{% else %}New sarees are coming soon.{% endif %}</p>{% endfor %}
+
+  <!-- ===== ABOUT ===== -->
+  <span class="anchor" id="about" style="left:0;top:2687px"></span>
+  <div class="bgblur" style="left:0px;top:2687px;width:1440px;height:895px;" data-slot="about-bg" role="img" aria-label="A bride in a saree, photographed in black and white"><span class="slot" style="background-color:transparent;background-image:var(--about-bg,none)"></span></div>
+  <h2 class="t ponnala rv" style="left:53px;top:2818px;font-size:87px;color:#fffbdd">About</h2>
+  <p class="t ponnala rv" style="left:53px;top:2910px;font-size:200px;color:#f2e9d2">Maah</p>
+  <p class="t ponnala rv" style="left:55px;top:3058px;font-size:49px;color:#f2e9d2">by amirtha</p>
+  <p class="t body rv" style="left:53px;top:3155px;font-size:27px">
+<span class="ln">Maah is inspired by the first love we know, a mother’s embrace. Derived</span>
+<span class="ln">from “Maah,” meaning mother, the brand represents nurture, warmth,</span>
+<span class="ln">and the earliest lessons of beauty.</span>
+<span class="ln">&nbsp;</span>
+<span class="ln">The logo integrates the Malayalam mother-tongue letter “മ” (Ma) with</span>
+<span class="ln">the Latin “M,” symbolising heritage and</span>
+<span class="ln">continuity where tradition meets contemporary expression. Its form</span>
+<span class="ln">flows like a gentle drape, reflecting how a</span>
+<span class="ln">mother first teaches us to wrap ourselves in beauty and identity. Soft</span>
+<span class="ln">curves express care and femininity, while</span>
+<span class="ln">the structured “M” adds strength and stability, balancing tenderness with</span>
+<span class="ln">resilience.</span>
+  </p>
+
+  <!-- ===== WHY MAAH ===== -->
+  <span class="anchor" id="why" style="left:0;top:3582px"></span>
+  <div class="bgblur" style="left:1px;top:3582px;width:1440px;height:895px;" data-slot="why-bg" role="img" aria-label="A woman in an ivory saree in dappled sunlight"><span class="slot" style="background-color:transparent;background-image:var(--why-bg,none)"></span></div>
+  <h2 class="t ponnala rv" style="left:53px;top:3652px;font-size:108px;color:#fffbdd">Why</h2>
+  <p class="t ponnala rv" style="left:53px;top:3754px;font-size:200px;color:#f2e9d2">Maah</p>
+
+  <!-- ===== FOOTER / CONTACT (black block from the design) ===== -->
+  <footer class="footer" id="contact"></footer>
+</main>
+</div>
+
+<div id="m">
+  <header class="m-nav" id="m-home-nav">
+    <a class="nav-account" href="{% url 'account' %}" aria-label="Your account" title="Your account"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="16" cy="10" r="5"/><path d="M6 28v-3a10 10 0 0 1 20 0v3"/></svg></a>
+    <button class="m-burger" id="mburger" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
+    <div class="m-logo"><span class="slot" data-slot="logo" style="background-image:var(--logo,none)"></span><span class="slot mark" data-slot="logo-mark" style="background-image:var(--logo-mark,none)"></span></div>
+    <a class="m-navlink" href="{% url 'cart' %}">cart</a>
+    <nav class="m-menu" id="mmenu" aria-label="Menu"><a href="#m-home">home</a><a href="{% url 'collections' %}">collections</a><a href="{% url 'new_arrivals' %}">new arrivals</a><a href="#m-about">about</a><a href="#m-contact">contact</a><a href="{% url 'account' %}">your account</a><a href="{% url 'cart' %}">cart</a></nav>
+  </header>
+
+  <section class="m-sec m-hero" id="m-home">
+    <div class="m-bg" data-slot="hero-bg" role="img" aria-label="A woman in a deep maroon saree, seated in warm window light" style="background-image:var(--hero-bg,none)"></div>
+    <h1 class="m-ponnala m-h1 rv">Maah</h1>
+    <p class="m-ponnala m-by rv">by amirtha</p>
+    <div class="m-text" style="margin-top:34px">
+      <p class="rv">Maah is inspired by the first love we know, a mother’s embrace. Derived from “Maah,” meaning mother, the brand represents nurture, warmth, and the earliest lessons of beauty.</p>
+      <p class="rv">The logo integrates the Malayalam mother-tongue letter “മ” (Ma) with the Latin “M,” symbolising heritage and continuity where tradition meets contemporary expression. Its form flows like a gentle drape, reflecting how a mother first teaches us to wrap ourselves in beauty and identity. Soft curves express care and femininity, while the structured “M” adds strength and stability, balancing tenderness with resilience.</p>
+    </div>
+    <a class="m-btn rv" href="{% url 'collections' %}">shop now</a>
+  </section>
+
+  <section class="m-sec m-cat" id="m-collections">
+    <div class="m-bg" data-slot="collections-bg" role="img" aria-label="A mother and daughter sharing a moment among flowers" style="background-image:var(--collections-bg,none)"></div>
+    <h2 class="m-ponnala m-h2 rv">Shop by category</h2>
+    <div class="m-grid">
+      <a class="m-card rv" href="{% url 'category' 'silk' %}" aria-label="Shop Silk sarees"><span class="slot" data-slot="silk" style="background-image:var(--silk,none)"></span><span class="bar">Silk</span></a>
+      <a class="m-card rv" href="{% url 'category' 'cotton' %}" aria-label="Shop Cotton sarees"><span class="slot" data-slot="cotton" style="background-image:var(--cotton,none)"></span><span class="bar">Cotton</span></a>
+      <a class="m-card rv" href="{% url 'category' 'shifon' %}" aria-label="Shop Shifon sarees"><span class="slot" data-slot="shifon" style="background-image:var(--shifon,none)"></span><span class="bar">Shifon</span></a>
+      <a class="m-card rv" href="{% url 'collections' %}" aria-label="Explore sarees"><span class="slot" data-slot="category-4" style="background-image:var(--category-4,none)"></span><span class="bar"></span></a>
+      <a class="m-card rv" href="{% url 'collections' %}" aria-label="Explore sarees"><span class="slot" data-slot="category-5" style="background-image:var(--category-5,none)"></span><span class="bar"></span></a>
+      <a class="m-card rv" href="{% url 'collections' %}" aria-label="Explore sarees"><span class="slot" data-slot="category-6" style="background-image:var(--category-6,none)"></span><span class="bar"></span></a>
+    </div>
+  </section>
+
+  <section class="m-sec m-new" id="m-new-arrivals">
+    <div class="m-bg" data-slot="new-arrivals-bg" role="img" aria-label="A mother and daughter among flower baskets" style="background-image:var(--new-arrivals-bg,none)"></div>
+    <h2 class="m-ponnala m-h2 rv">New arrivals</h2>
+    <div class="m-rail">
+      {% for product in arrivals %}<a class="m-card rv home-arrival" href="{% url 'product' product.slug %}" aria-label="{{ product.name }}"><span class="slot" style="background-image:url('{{ product.image_url }}')"></span><span class="bar">{{ product.name }}</span></a>{% empty %}<p>{% if catalog_error %}{{ catalog_error }}{% else %}New sarees are coming soon.{% endif %}</p>{% endfor %}
+    </div>
+  </section>
+
+  <section class="m-sec m-about" id="m-about">
+    <div class="m-bg" data-slot="about-bg" role="img" aria-label="A bride in a saree, photographed in black and white" style="background-image:var(--about-bg,none)"></div>
+    <h2 class="m-ponnala m-h2 rv">About</h2>
+    <p class="m-ponnala m-h1 rv">Maah</p>
+    <p class="m-ponnala m-by rv">by amirtha</p>
+    <div class="m-text">
+      <p class="rv">Maah is inspired by the first love we know, a mother’s embrace. Derived from “Maah,” meaning mother, the brand represents nurture, warmth, and the earliest lessons of beauty.</p>
+      <p class="rv">The logo integrates the Malayalam mother-tongue letter “മ” (Ma) with the Latin “M,” symbolising heritage and continuity where tradition meets contemporary expression. Its form flows like a gentle drape, reflecting how a mother first teaches us to wrap ourselves in beauty and identity. Soft curves express care and femininity, while the structured “M” adds strength and stability, balancing tenderness with resilience.</p>
+    </div>
+  </section>
+
+  <section class="m-sec m-why" id="m-why">
+    <div class="m-bg" data-slot="why-bg" role="img" aria-label="A woman in an ivory saree in dappled sunlight" style="background-image:var(--why-bg,none)"></div>
+    <h2 class="m-ponnala m-h2 rv">Why</h2>
+    <p class="m-ponnala m-h1 rv">Maah</p>
+  </section>
+
+  <footer class="m-footer" id="m-contact"></footer>
+</div>
+<script src="{% static 'store/site.js' %}"></script>
+</body>
+</html>

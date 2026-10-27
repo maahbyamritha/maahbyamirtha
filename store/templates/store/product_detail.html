@@ -1,0 +1,57 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% block title %}{{ product.name }} | Maah by Amirtha{% endblock %}
+{% block description %}{{ product.description }}{% endblock %}
+{% block content %}
+  <article class="pg-product pg-product--classic">
+    <div class="pg-pimg pg-rv" role="img" aria-label="{{ product.name }}" style="background-image:url('{{ product.image_url }}')">
+      {% if product.is_new %}<span class="badge">new</span>{% endif %}
+    </div>
+    <div class="pg-info pg-rv">
+      {% if product.category %}
+      <a class="pg-kicker" href="{% url 'category' product.category.slug %}">{{ product.category_label }}</a>
+      {% else %}<span class="pg-kicker">{{ product.category_label }}</span>{% endif %}
+      <h1>{{ product.name }}</h1>
+      <p class="pg-price" id="productPrice">{{ product.price_display }}</p>
+      {% if not product.available_for_sale %}<p>Sold out</p>{% endif %}
+      <p class="pg-desc">{{ product.description }}</p>
+      {% if product.details %}<dl class="pg-details">
+        {% for label, value in product.details %}
+        <div><dt>{{ label }}</dt><dd>{{ value }}</dd></div>
+        {% endfor %}
+      </dl>{% endif %}
+      {% if product.can_buy %}
+      <form class="purchase-form" method="post" action="{% url 'cart_add' %}">
+        {% csrf_token %}
+        <input type="hidden" name="handle" value="{{ product.slug }}">
+        <label for="productVariant">Option</label>
+        <select id="productVariant" name="variant" required>
+          {% for variant in product.variants %}
+          <option value="{{ variant.id }}" data-price="{{ variant.price }}"{% if variant.selected %} selected{% endif %}{% if not variant.available %} disabled{% endif %}>{% if variant.title == 'Default Title' %}Standard{% else %}{{ variant.title }}{% endif %} — {{ variant.price }}{% if not variant.available %} — Sold out{% endif %}</option>
+          {% endfor %}
+        </select>
+        <label for="productQuantity">Quantity</label>
+        <input id="productQuantity" type="number" name="quantity" value="1" min="1" max="99" required>
+        <button class="pg-btn" type="submit">Add to cart</button>
+      </form>
+      {% else %}<p class="purchase-note">Currently unavailable to order.</p>{% endif %}
+      <div class="pg-actions">
+        <a class="pg-btn" href="{% url 'home' %}#contact">Enquire about this saree</a>
+        {% if product.category %}
+        <a class="pg-link" href="{% url 'category' product.category.slug %}">&larr; Back to {{ product.category.name|lower }}</a>
+        {% else %}<a class="pg-link" href="{% url 'new_arrivals' %}">&larr; Back to sarees</a>{% endif %}
+      </div>
+    </div>
+  </article>
+
+  {% if related %}
+  <section class="pg-related" aria-labelledby="relatedTitle">
+    <h2 class="pg-title pg-title--sm pg-rv" id="relatedTitle">You may also like</h2>
+    <div class="pg-grid">
+      {% for p in related %}{% include 'store/_product_card.html' with product=p %}{% endfor %}
+    </div>
+  </section>
+  {% endif %}
+{% endblock %}
+
+{% block extra_scripts %}<script src="{% static 'store/cart.js' %}"></script>{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% block title %}Your cart | Maah by Amirtha{% endblock %}
+{% block content %}
+<header class="pg-head"><h1 class="pg-title">Your cart</h1></header>
+<div class="cart-panel">
+  {% if cart_error %}<p class="cart-notice" role="alert">{{ cart_error }} <a href="{% url 'cart' %}">Refresh cart</a></p>{% endif %}
+  {% for warning in cart_warnings %}<p class="cart-notice" role="status">{{ warning }}</p>{% endfor %}
+  {% if cart.lines %}
+    {% for line in cart.lines %}
+    <article class="cart-line">
+      <a href="{% url 'product' line.handle %}" class="cart-image-link">{% if line.image %}<img src="{{ line.image }}" alt="{{ line.title }}" class="cart-image">{% else %}<span class="cart-image cart-placeholder">{{ line.title }}</span>{% endif %}</a>
+      <div class="cart-line-info">
+        <h2><a href="{% url 'product' line.handle %}">{{ line.title }}</a></h2>
+        {% if line.variant %}<p>{{ line.variant }}</p>{% endif %}
+        {% if not line.available %}<p>Currently unavailable. Remove this item before checkout.</p>{% endif %}
+        <p class="cart-line-total">{{ line.total }}</p>
+        <form method="post" action="{% url 'cart_change' %}" class="cart-controls">
+          {% csrf_token %}<input type="hidden" name="line" value="{{ line.id }}">
+          <label for="qty-{{ forloop.counter }}">Quantity</label>
+          <input id="qty-{{ forloop.counter }}" type="number" name="quantity" value="{{ line.quantity }}" min="1" max="99" required>
+          <button type="submit" name="action" value="update">Update</button>
+          <button type="submit" name="action" value="remove" formnovalidate>Remove</button>
+        </form>
+      </div>
+    </article>
+    {% endfor %}
+    <div class="cart-summary">
+      <p>Subtotal <strong>{{ cart.subtotal }}</strong></p>
+      <p>Estimated total <strong>{{ cart.total }}</strong></p>
+      <p class="purchase-note">Shipping, taxes and discounts are confirmed at checkout.</p>
+      <form method="post" action="{% url 'checkout' %}">{% csrf_token %}<button type="submit" class="pg-btn">Checkout</button></form>
+    </div>
+  {% elif not cart_error %}<p>Your cart is empty. Find a saree you love.</p>{% endif %}
+  <a class="pg-link" href="{% url 'new_arrivals' %}">Continue shopping &rarr;</a>
+</div>
+{% endblock %}
+{% block extra_scripts %}<script src="{% static 'store/cart.js' %}"></script>{% endblock %}

@@ -1,0 +1,63 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#cdb7b7">
+  <title>{% block title %}Maah by Amirtha{% endblock %}</title>
+  <meta name="description" content="{% block description %}Maah by Amirtha. Sarees rooted in nurture, warmth, and heritage.{% endblock %}">
+  <!-- adds the "js" class before first paint so reveal animations can start hidden (skipped for reduced motion) -->
+  <script>if(!matchMedia("(prefers-reduced-motion:reduce)").matches)document.documentElement.classList.add("js")</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Reddit+Sans&family=Source+Sans+3&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'store/fonts.css' %}">
+  <link rel="stylesheet" href="{% static 'store/pages.css' %}?v=shopify-account-1">
+  <style>:root { --logo: url("{% static 'store/images/maah-wide-logo.png' %}"); }</style>
+  {% block extra_head %}{% endblock %}
+</head>
+<body class="pg">
+  <div class="pg-bg" style="background-image:url('{% static bg %}')" aria-hidden="true"></div>
+
+  <header class="pg-nav" id="pgNav">
+    <button class="pg-burger" id="pgBurger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="pgMenu"><i></i><i></i><i></i></button>
+    <a class="nav-account" href="{% url 'account' %}" aria-label="Your account" title="Your account"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="16" cy="10" r="5"/><path d="M6 28v-3a10 10 0 0 1 20 0v3"/></svg></a>
+    <a class="pg-logo" href="{% url 'home' %}" aria-label="Maah by Amirtha, home"></a>
+    <nav class="pg-links" aria-label="Main">
+      <a href="{% url 'home' %}">home</a>
+      <a href="{% url 'collections' %}"{% if active == 'collections' %} aria-current="page"{% endif %}>collections</a>
+      <a href="{% url 'new_arrivals' %}"{% if active == 'new_arrivals' %} aria-current="page"{% endif %}>new arrivals</a>
+      <a href="{% url 'home' %}#about">about</a>
+      <a href="{% url 'home' %}#contact">contact</a>
+      <a href="{% url 'cart' %}"{% if active == 'cart' %} aria-current="page"{% endif %}>cart</a>
+    </nav>
+    <nav class="pg-menu" id="pgMenu" aria-label="Menu">
+      <a href="{% url 'home' %}">home</a>
+      <a href="{% url 'collections' %}">collections</a>
+      <a href="{% url 'new_arrivals' %}">new arrivals</a>
+      <a href="{% url 'home' %}#about">about</a>
+      <a href="{% url 'home' %}#contact">contact</a>
+      <a href="{% url 'account' %}">your account</a>
+      <a href="{% url 'cart' %}">cart</a>
+    </nav>
+    <a class="mobile-cart-link" href="{% url 'cart' %}">cart</a>
+  </header>
+
+  <main class="pg-main">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="pg-footer" id="contact">
+    <p class="pg-footer-brand">Maah <span>by amirtha</span></p>
+    <nav aria-label="Footer">
+      <a href="{% url 'collections' %}">collections</a>
+      <a href="{% url 'new_arrivals' %}">new arrivals</a>
+      <a href="{% url 'home' %}#about">about</a>
+    </nav>
+    <p class="pg-footer-copy">&copy; {% now "Y" %} Maah by Amirtha</p>
+  </footer>
+
+  <script src="{% static 'store/pages.js' %}"></script>
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>

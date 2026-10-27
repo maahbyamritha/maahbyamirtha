@@ -1,0 +1,23 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% block title %}Collections | Maah by Amirtha{% endblock %}
+{% block description %}Explore the saree collections from Maah by Amirtha.{% endblock %}
+{% block content %}
+  <nav class="pg-crumbs" aria-label="Breadcrumb"><a href="{% url 'home' %}">home</a> <span>/</span> <span aria-current="page">collections</span></nav>
+  <div class="pg-head">
+    <h1 class="pg-title pg-rv">Shop by category</h1>
+    <p class="pg-sub pg-rv">Choose a collection to see every saree in it.</p>
+  </div>
+  <p class="pg-sub"><a href="{% url 'new_arrivals' %}">Shop all sarees &rarr;</a></p>
+  {% if catalog_error %}<p class="pg-empty" role="status">{{ catalog_error }}</p>{% endif %}
+  <div class="pg-cats">
+    {% for c in categories %}
+    <a class="pg-catcard pg-rv" href="{% url 'category' c.slug %}" aria-label="Shop {{ c.name }} sarees">
+      <span class="ph" style="background-image:url('{{ c.image_url }}')"></span>
+      <span class="bar"><span class="name">{{ c.name }}</span><span class="count">Explore collection</span></span>
+    </a>
+    {% empty %}{% if not catalog_error %}<p class="pg-empty">Our collections are coming soon. Browse all sarees above.</p>{% endif %}
+    {% endfor %}
+  </div>
+{% include "store/_pagination.html" %}
+{% endblock %}

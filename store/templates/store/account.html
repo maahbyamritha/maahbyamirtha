@@ -1,0 +1,24 @@
+{% extends 'store/base.html' %}
+{% block title %}Your account | Maah by Amirtha{% endblock %}
+{% block description %}Sign in to your Maah account to view your orders and manage your details.{% endblock %}
+{% block content %}
+<section class="account-shell" aria-labelledby="accountTitle">
+  <div class="account-panel">
+    <span class="account-symbol" aria-hidden="true">
+      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="16" cy="10" r="5"/><path d="M6 28v-3a10 10 0 0 1 20 0v3"/></svg>
+    </span>
+    <p class="pg-kicker">Maah by amirtha</p>
+    <h1 id="accountTitle">Welcome back</h1>
+    <p class="account-intro">Your favourite sarees, and the stories still to come.</p>
+    {% if account_ready %}
+    <p>Sign in with your email to view your orders and manage your account. A one-time code keeps your sign-in simple and secure.</p>
+    <a class="pg-btn account-continue" href="{% url 'account_login' %}">Continue to sign in <span aria-hidden="true">&rarr;</span></a>
+    <p class="account-note">You’ll continue to our secure Shopify account page.</p>
+    <div class="account-new"><h2>New to Maah?</h2><p>Use the same button to get started. Your account is created when you verify your email.</p></div>
+    {% else %}
+    <p class="cart-notice" role="alert">Account sign-in is temporarily unavailable. Please try again shortly.</p>
+    {% endif %}
+    <a class="pg-link" href="{% url 'new_arrivals' %}">Continue shopping &rarr;</a>
+  </div>
+</section>
+{% endblock %}

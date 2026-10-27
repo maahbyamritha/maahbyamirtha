@@ -1,0 +1,19 @@
+{% extends 'store/base.html' %}
+{% block title %}{{ category.name }} sarees | Maah by Amirtha{% endblock %}
+{% block description %}{{ category.blurb }}{% endblock %}
+{% block content %}
+  <nav class="pg-crumbs" aria-label="Breadcrumb"><a href="{% url 'home' %}">home</a> <span>/</span> <a href="{% url 'collections' %}">collections</a> <span>/</span> <span aria-current="page">{{ category.name|lower }}</span></nav>
+  <div class="pg-head">
+    <h1 class="pg-title pg-rv">{{ category.name }}</h1>
+    <p class="pg-sub pg-rv">{{ category.blurb }}</p>
+  </div>
+  {% if catalog_error %}<p class="pg-empty" role="status">{{ catalog_error }}</p>
+  {% elif products %}
+  <div class="pg-grid">
+    {% for p in products %}{% include 'store/_product_card.html' with product=p %}{% endfor %}
+  </div>
+  {% else %}
+  <p class="pg-empty">No sarees in this collection yet. Please check back soon.</p>
+  {% endif %}
+{% include "store/_pagination.html" %}
+{% endblock %}
